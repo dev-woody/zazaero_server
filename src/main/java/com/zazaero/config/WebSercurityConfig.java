@@ -29,18 +29,18 @@ class WebSecurityConfig {
                 .requestMatchers("/static/**");
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeRequests((authz) -> authz.requestMatchers("/login", "/signup", "/user").permitAll()
-                        .anyRequest().authenticated())
-                .formLogin((formLogin) -> formLogin.loginPage("/login")
-                        .defaultSuccessUrl("/articles"))
-                .logout((logout) -> logout.logoutSuccessUrl("/login")
-                        .invalidateHttpSession(true))
-                .csrf(AbstractHttpConfigurer::disable)
-                .build();
-    }
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        return http
+//                .authorizeRequests((authz) -> authz.requestMatchers("/login", "/signup", "/user", "/hello.html").permitAll()
+//                        .anyRequest().authenticated())
+//                .formLogin((formLogin) -> formLogin.loginPage("/login")
+//                        .defaultSuccessUrl("/articles"))
+//                .logout((logout) -> logout.logoutSuccessUrl("/login")
+//                        .invalidateHttpSession(true))
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .build();
+//    }
 //
 //    @Bean
 //    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService) throws Exception {
