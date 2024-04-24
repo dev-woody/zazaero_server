@@ -1,16 +1,22 @@
 package com.zazaero.config;
 
-import com.zazaero.service.UserDetailService;
+import com.zazaero.config.customSecurity.CustomAuthenticationFilter;
+import com.zazaero.config.customSecurity.CustomAuthenticationProvider;
+import com.zazaero.service.MemberDetailService;
+import com.zazaero.util.AESUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -18,32 +24,56 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 
 @RequiredArgsConstructor
 @Configuration
-class WebSecurityConfig {
+public class WebSecurityConfig {
 
-    private final UserDetailService userService;
+    @Autowired
+    public AESUtil aesUtil;
+
+    @Autowired
+    private final MemberDetailService userService;
 
     @Bean
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring()
                 .requestMatchers(toH2Console())
-                .requestMatchers("/static/**");
+                .requestMatchers("/**");
     }
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((requests) -> requests
+//                        .requestMatchers("/hello.html").permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .formLogin((form) -> form
+//                        .loginPage("/login.html")
+//                        .loginProcessingUrl("/login")
+//                        .defaultSuccessUrl("/hello.html")
+//                        .permitAll()
+//                )
+//                .logout((logout) -> logout.permitAll());
+//
+//        return http.build();
+//    }
 
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 //        return http
-//                .authorizeRequests((authz) -> authz.requestMatchers("/login", "/signup", "/user", "/hello.html").permitAll()
+//                .authorizeRequests((authz) -> authz.requestMatchers("/login", "/signup", "/user").permitAll()
 //                        .anyRequest().authenticated())
 //                .formLogin((formLogin) -> formLogin.loginPage("/login")
-//                        .defaultSuccessUrl("/articles"))
+////                        .defaultSuccessUrl("/articles"))
+//                        .permitAll())
 //                .logout((logout) -> logout.logoutSuccessUrl("/login")
-//                        .invalidateHttpSession(true))
+////                        .invalidateHttpSession(true))
+//                )
 //                .csrf(AbstractHttpConfigurer::disable)
 //                .build();
 //    }
-//
+
 //    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService) throws Exception {
+//    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, MemberDetailService userDetailService) throws Exception {
 //        AuthenticationManagerBuilder authenticationManagerBuilder =
 //                http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(userService)
 //                        .passwordEncoder(bCryptPasswordEncoder);
@@ -62,5 +92,15 @@ public DaoAuthenticationProvider daoAuthenticationProvider() throws Exception {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        return new CustomAuthenticationProvider(userService, aesUtil);
     }
 }

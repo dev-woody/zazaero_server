@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/zazaero_copy?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/zazaero?zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: WENDY_739597
   thymeleaf:
@@ -13,6 +13,10 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+
+  h2:
+    url: jdbc:h2:mem:testdb
+    username: sa
 
   jwt:
     issuer: woody@zzro.kr
