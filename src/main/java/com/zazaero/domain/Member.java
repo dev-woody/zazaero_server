@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.sql.Date;
 
@@ -30,118 +31,118 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private Date reg_date;
 
-    @Column
+    @Column(nullable = false)
     private Time reg_time;
 
-    @Column
+    @Column(nullable = false)
     private Integer reg_mem_uid;
 
     @Column(columnDefinition = "varchar")
     private String reg_mem_machine;
 
-    @Column
+    @Column(nullable = false)
     private String reg_mem_os;
 
-    @Column
+    @Column(nullable = false)
     private Long com_uid;
 
-    @Column
+    @Column(nullable = false)
     private String com_fax;
 
-    @Column
+    @Column(nullable = false)
     private String biz_cate;
 
-    @Column
+    @Column(nullable = false)
     private String biz_item;
 
-    @Column
+    @Column(nullable = false)
     private String mem_ok_status;
 
-    @Column
+    @Column(nullable = false)
     private Integer sale_code_uid;
 
-    @Column
+    @Column(nullable = false)
     private String tax_calc_email;
 
-    @Column
+    @Column(nullable = false)
     private String mem_type;
 
     @Column(name = "mem_id", nullable = false, unique = true)
     private String id;
 
-    @Column
+    @Column(nullable = false)
     private String com_name;
 
-    @Column
+    @Column(nullable = false)
     private String com_name2;
 
-    @Column
+    @Column(nullable = false)
     private String com_biz_no;
 
-    @Column
+    @Column(nullable = false)
     private String com_biz_name;
 
-    @Column
+    @Column(nullable = false)
     private String ceo_name;
 
-    @Column(name = "ENC_mem_pw", nullable = false)
+    @Column(nullable = false)
     private String ENC_mem_pw;
 
-    @Column
+    @Column(nullable = false)
     private String ENC_app_login_key;
 
-    @Column
+    @Column(nullable = false)
     private Integer Z_app_device_uid;
 
-    @Column
+    @Column(nullable = false)
     private String device_id;
 
-    @Column
+    @Column(nullable = false)
     private String app_device_os;
 
-    @Column
+    @Column(nullable = false)
     private String push_id;
 
     @Column(nullable = false)
-    private Date push_key_datetime;
+    private LocalDateTime push_key_datetime;
 
     @Column(nullable = false)
-    private Date push_id_dt;
+    private LocalDateTime push_id_dt;
 
     @Column(nullable = false)
     private Date pw_mod_date;
 
-    @Column
+    @Column(nullable = false)
     private Time pw_mod_time;
 
-    @Column
+    @Column(nullable = false)
     private String mem_name;
 
-    @Column
+    @Column(nullable = false)
     private String mem_nickname;
 
-    @Column
+    @Column(nullable = false)
     private String mem_mobile;
 
-    @Column
+    @Column(nullable = false)
     private String mem_phone;
 
-    @Column
+    @Column(nullable = false)
     private String mem_email;
 
-    @Column
+    @Column(nullable = false)
     private String zipcode;
 
-    @Column
+    @Column(nullable = false)
     private String zonecode;
 
-    @Column
+    @Column(nullable = false)
     private String addr1;
 
-    @Column
+    @Column(nullable = false)
     private String addr2;
 
-    @Column
+    @Column(nullable = false)
     private String road_address;
 
     @Column
@@ -153,145 +154,145 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private Date work_edate;
 
-    @Column
+    @Column(nullable = false)
     private Integer team_uid;
 
-    @Column
+    @Column(nullable = false)
     private String mem_no;
 
-    @Column
+    @Column(nullable = false)
     private String pay_bank_code;
 
-    @Column
+    @Column(nullable = false)
     private String pay_bank_owner;
 
-    @Column
+    @Column(nullable = false)
     private Integer last_mem_log_uid;
 
     @Column(nullable = false)
     private Date last_mem_log_date;
 
-    @Column
+    @Column(nullable = false)
     private Time last_mem_log_time;
 
-    @Column
+    @Column(nullable = false)
     private String hire_status;
 
-    @Column
+    @Column(nullable = false)
     private String hire_type;
 
-    @Column
+    @Column(nullable = false)
     private String mem_use_flag;
 
-    @Column
+    @Column(nullable = false)
     private String license_flag;
 
-    @Column
+    @Column(nullable = false)
     private String sub_broker_flag;
 
-    @Column
+    @Column(nullable = false)
     private String auto_buyer_uid;
 
-    @Column
+    @Column(nullable = false)
     private String mem_prev;
 
     @Column(nullable = false)
     private Date mod_date;
 
-    @Column
+    @Column(nullable = false)
     private Time mod_time;
 
-    @Column
+    @Column(nullable = false)
     private Integer mod_mem_uid;
 
-    @Column
+    @Column(nullable = false)
     private String my_memo;
 
-    @Column
+    @Column(nullable = false)
     private Integer last_mgr_assign_index;
 
-    @Column
+    @Column(nullable = false)
     private Integer last_building_assign_index;
 
-    @Column
+    @Column(nullable = false)
     private commCode.SnsCode connected_sns;
 
-    @Column
+    @Column(nullable = false)
     private String team_name;
 
-    @Column
+    @Column(nullable = false)
     private String rank_name;
 
-    @Column
+    @Column(nullable = false)
     private Integer customer_uid;
 
-    @Column
+    @Column(nullable = false)
     private String find_certi_no;
 
-    @Column(nullable = false)
-    private Date find_certi_dt;
-
     @Column
+    private LocalDateTime find_certi_dt;
+
+    @Column(nullable = false)
     private String sns_prev;
 
-    @Column
+    @Column(nullable = false)
     private String recom_mem_id;
 
-    @Column
+    @Column(nullable = false)
     private Integer mem_out_reason_uid;
 
-    @Column
+    @Column(nullable = false)
     private String mem_out_reason_memo;
 
-    @Column
+    @Column(nullable = false)
     private Date mem_out_time;
 
-    @Column
+    @Column(nullable = false)
     private Integer mem_out_mem_uid;
 
-    @Column
+    @Column(nullable = false)
     private Integer mem_point;
 
-    @Column
+    @Column(nullable = false)
     private String sns_type;
 
-    @Column
+    @Column(nullable = false)
     private String sns_id;
 
     @Column(nullable = false)
     private Date provision_agree_date;
 
-    @Column
+    @Column(nullable = false)
     private String provision_agree_type;
 
-    @Column
+    @Column(nullable = false)
     private Integer mem_day_chk_cnt;
 
-    @Column
+    @Column(nullable = false)
     private Integer cnt_login;
 
-    @Column
+    @Column(nullable = false)
     private Integer client_level_uid;
 
-    @Column
+    @Column(nullable = false)
     private String mgr_sms_recv;
 
-    @Column
+    @Column(nullable = false)
     private String mem_mobile_hide;
 
-    @Column
+    @Column(nullable = false)
     private String chk_email_sms;
 
-    @Column
+    @Column(nullable = false)
     private String AT_app_test;
 
-    @Column
+    @Column(nullable = false)
     private String AT_app_debug;
 
-    @Column
+    @Column(nullable = false)
     private String push_ad_flag;
 
-    @Column
+    @Column(nullable = false)
     private String mem_out_flag;
 
     @Transient

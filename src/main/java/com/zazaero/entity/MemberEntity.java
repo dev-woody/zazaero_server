@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
 import java.sql.Time;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -96,13 +96,13 @@ public class MemberEntity {
     private String push_id;
 
     @Column
-    private java.util.Date push_key_datetime;
+    private Date push_key_datetime;
 
     @Column
-    private java.util.Date push_id_dt;
+    private Date push_id_dt;
 
     @Column
-    private java.util.Date pw_mod_date;
+    private Date pw_mod_date;
 
     @Column
     private Time pw_mod_time;
@@ -141,10 +141,10 @@ public class MemberEntity {
     private String memo;
 
     @Column
-    private java.util.Date work_sdate;
+    private Date work_sdate;
 
     @Column
-    private java.util.Date work_edate;
+    private Date work_edate;
 
     @Column
     private Integer team_uid;
@@ -165,7 +165,7 @@ public class MemberEntity {
     private Integer last_mem_log_uid;
 
     @Column
-    private java.util.Date last_mem_log_date;
+    private Date last_mem_log_date;
 
     @Column
     private Time last_mem_log_time;
@@ -192,7 +192,7 @@ public class MemberEntity {
     private String mem_prev;
 
     @Column
-    private java.util.Date mod_date;
+    private Date mod_date;
 
     @Column
     private Time mod_time;
@@ -225,7 +225,7 @@ public class MemberEntity {
     private String find_certi_no;
 
     @Column
-    private java.util.Date find_certi_dt;
+    private Date find_certi_dt;
 
     @Column
     private String sns_prev;
@@ -240,7 +240,7 @@ public class MemberEntity {
     private String mem_out_reason_memo;
 
     @Column
-    private java.util.Date mem_out_time;
+    private Date mem_out_time;
 
     @Column
     private Integer mem_out_mem_uid;
@@ -255,7 +255,7 @@ public class MemberEntity {
     private String sns_id;
 
     @Column
-    private java.util.Date provision_agree_date;
+    private Date provision_agree_date;
 
     @Column
     private String provision_agree_type;
