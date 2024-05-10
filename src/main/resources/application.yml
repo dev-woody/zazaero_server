@@ -6,6 +6,7 @@ spring:
     password: WENDY_739597
   thymeleaf:
     cache: false
+#    zeroDateTimeBehavior=convertToNull&
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect

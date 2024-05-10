@@ -3,9 +3,9 @@ package com.zazaero.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
-public class AddUserRequest {
-    private String email;
+@Setter
+public class AddMemberRequest {
+    private String id;
     private String password;
 }

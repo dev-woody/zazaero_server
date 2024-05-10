@@ -1,7 +1,7 @@
 package com.zazaero.controller;
 
-import com.zazaero.dto.AddUserRequest;
-import com.zazaero.service.UserService;
+import com.zazaero.dto.AddMemberRequest;
+import com.zazaero.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @RequiredArgsConstructor
 @Controller
-public class UserApiController {
+public class MemberApiController {
 
-    private final UserService userService;
+    private final MemberService memberService;
 
     @PostMapping("/user")
-    public String signup(AddUserRequest request) {
-        userService.save(request);
+    public String signup(AddMemberRequest request) {
+        memberService.save(request);
         return "redirect:/login";
     }
 

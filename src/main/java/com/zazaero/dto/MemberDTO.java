@@ -1,23 +1,26 @@
 package com.zazaero.dto;
 
-import com.zazaero.entity.MemberEntity;
+//import com.zazaero.entity.MemberEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zazaero.domain.Member;
 import com.zazaero.util.enumcode.commCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
-import java.sql.Date;
-import java.util.Set;
+import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
+@Data
 public class MemberDTO {
 
     private Long mem_uid;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date reg_date;
     private Time reg_time;
     private Integer reg_mem_uid;
@@ -30,21 +33,21 @@ public class MemberDTO {
     private String mem_ok_status;
     private Integer sale_code_uid;
     private String tax_calc_email;
-    private commCode.MemCode mem_type;
-    private String mem_id;
+    private String mem_type;
+    private String id;
     private String com_name;
     private String com_name2;
     private String com_biz_no;
     private String com_biz_name;
     private String ceo_name;
-    private String ENC_mem_pw;
+    private String password;
     private String ENC_app_login_key;
-    private Integer Z_app_device_id;
+    private Integer Z_app_device_uid;
     private String device_id;
     private String app_device_os;
     private String push_id;
-    private Date push_key_datetime;
-    private Date push_id_dt;
+    private LocalDateTime push_key_datetime;
+    private LocalDateTime push_id_dt;
     private Date pw_mod_date;
     private Time pw_mod_time;
     private String mem_name;
@@ -61,7 +64,7 @@ public class MemberDTO {
     private Date work_sdate;
     private Date work_edate;
     private Integer team_uid;
-    private Integer team_rank_uid;
+    private Integer mem_rank_uid;
     private String mem_no;
     private String pay_bank_code;
     private String pay_bank_owner;
@@ -71,8 +74,8 @@ public class MemberDTO {
     private String hire_status;
     private String hire_type;
     private String mem_use_flag;
-    private commCode.YNCode license_flag;
-    private commCode.YNCode sub_broker_flag;
+    private String license_flag;
+    private String sub_broker_flag;
     private String auto_buyer_uid;
     private String mem_prev;
     private Date mod_date;
@@ -81,16 +84,18 @@ public class MemberDTO {
     private String my_memo;
     private Integer last_mgr_assign_index;
     private Integer last_building_assign_index;
-    private Set<commCode.SnsCode> connected_sns;
+    private commCode.SnsCode connected_sns;
     private String team_name;
     private String rank_name;
     private Integer customer_uid;
     private String find_certi_no;
-    private Date find_certi_dt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime find_certi_dt;
     private String sns_prev;
-    private String recome_meme_id;
+    private String recom_mem_id;
     private Integer mem_out_reason_uid;
     private String mem_out_reason_memo;
+    private Date mem_out_date;
     private Date mem_out_time;
     private Integer mem_out_mem_uid;
     private Integer mem_point;
@@ -101,7 +106,7 @@ public class MemberDTO {
     private Integer mem_day_chk_cnt;
     private Integer cnt_login;
     private Integer client_level_uid;
-    private String mrg_sms_recv;
+    private String mgr_sms_recv;
     private String mem_mobile_hide;
     private String chk_email_sms;
     private String AT_app_test;
@@ -111,7 +116,7 @@ public class MemberDTO {
 
     //lombok 어노테이션으로 getter,setter,생성자,toString 메서드 생략 가능
 
-    public static MemberDTO toMemberDTO(MemberEntity memberEntity){
+    public static MemberDTO toMemberDTO(Member memberEntity){
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setMem_uid(memberEntity.getMem_uid());
         memberDTO.setReg_date(memberEntity.getReg_date());
@@ -127,15 +132,15 @@ public class MemberDTO {
         memberDTO.setSale_code_uid(memberEntity.getSale_code_uid());
         memberDTO.setTax_calc_email(memberEntity.getTax_calc_email());
         memberDTO.setMem_type(memberEntity.getMem_type());
-        memberDTO.setMem_id(memberEntity.getMem_id());
+        memberDTO.setId(memberEntity.getId());
         memberDTO.setCom_name(memberEntity.getCom_name());
         memberDTO.setCom_name2(memberEntity.getCom_name2());
         memberDTO.setCom_biz_no(memberEntity.getCom_biz_name());
         memberDTO.setCom_biz_name(memberEntity.getCom_biz_name());
         memberDTO.setCeo_name(memberEntity.getCeo_name());
-        memberDTO.setENC_mem_pw(memberEntity.getENC_mem_pw());
+        memberDTO.setPassword(memberEntity.getPassword());
         memberDTO.setENC_app_login_key(memberEntity.getENC_app_login_key());
-        memberDTO.setZ_app_device_id(memberEntity.getZ_app_device_id());
+        memberDTO.setZ_app_device_uid(memberEntity.getZ_app_device_uid());
         memberDTO.setDevice_id(memberEntity.getDevice_id());
         memberDTO.setApp_device_os(memberEntity.getApp_device_os());
         memberDTO.setPush_id(memberEntity.getPush_id());
@@ -157,6 +162,7 @@ public class MemberDTO {
         memberDTO.setWork_sdate(memberEntity.getWork_sdate());
         memberDTO.setWork_edate(memberEntity.getWork_edate());
         memberDTO.setTeam_uid(memberEntity.getTeam_uid());
+        memberDTO.setMem_rank_uid(memberEntity.getMem_rank_uid());
         memberDTO.setMem_no(memberEntity.getMem_no());
         memberDTO.setPay_bank_code(memberEntity.getPay_bank_code());
         memberDTO.setPay_bank_owner(memberEntity.getPay_bank_owner());
@@ -183,9 +189,10 @@ public class MemberDTO {
         memberDTO.setFind_certi_no(memberEntity.getFind_certi_no());
         memberDTO.setFind_certi_dt(memberEntity.getFind_certi_dt());
         memberDTO.setSns_prev(memberEntity.getSns_prev());
-        memberDTO.setRecome_meme_id(memberEntity.getRecome_meme_id());
+        memberDTO.setRecom_mem_id(memberEntity.getRecom_mem_id());
         memberDTO.setMem_out_reason_uid(memberEntity.getMem_out_reason_uid());
         memberDTO.setMem_out_reason_memo(memberEntity.getMem_out_reason_memo());
+        memberDTO.setMem_out_date(memberEntity.getMem_out_date());
         memberDTO.setMem_out_time(memberEntity.getMem_out_time());
         memberDTO.setMem_out_mem_uid(memberEntity.getMem_out_mem_uid());
         memberDTO.setMem_point(memberEntity.getMem_point());
@@ -196,7 +203,7 @@ public class MemberDTO {
         memberDTO.setMem_day_chk_cnt(memberEntity.getMem_day_chk_cnt());
         memberDTO.setCnt_login(memberEntity.getCnt_login());
         memberDTO.setClient_level_uid(memberEntity.getClient_level_uid());
-        memberDTO.setMrg_sms_recv(memberEntity.getMrg_sms_recv());
+        memberDTO.setMgr_sms_recv(memberEntity.getMgr_sms_recv());
         memberDTO.setMem_mobile_hide(memberEntity.getMem_mobile_hide());
         memberDTO.setChk_email_sms(memberEntity.getChk_email_sms());
         memberDTO.setAT_app_test(memberEntity.getAT_app_test());

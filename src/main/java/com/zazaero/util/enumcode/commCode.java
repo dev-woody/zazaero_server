@@ -36,4 +36,24 @@ public class commCode {
         private String name;
     }
 
+    @Getter
+    @AllArgsConstructor
+    public enum ComType {
+        C001("COM"),
+        C002("ONE"),
+        C003("IND"),
+        C004("MST");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum ComStatus {
+        C001("counsel"),
+        C002("customer");
+
+        private String name;
+    }
+
 }

@@ -2,19 +2,16 @@ package com.zazaero.controller;
 
 import com.zazaero.domain.Member;
 import com.zazaero.dto.MemberDTO;
-import com.zazaero.dto.SignInDto;
 import com.zazaero.repository.MemberRepository;
 import com.zazaero.service.MemberService;
-import com.zazaero.util.AESUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,10 +35,16 @@ public class MemberController {
         return "index";
     }
 
+//@GetMapping("/changePass")
+//    public ResponseEntity<List<Member>> changePW() throws Exception {
+//    public ResponseEntity<Optional<Member>> changePW() throws Exception {
 
-    @GetMapping("/changePW")
-    public ResponseEntity<String> changePW() throws Exception {
-        memberService.changePW();
-        return ResponseEntity.status(HttpStatus.OK).body("비밀번호 변경에 성공했습니다.");
-    }
+//        public List<Member> changePW() {
+//            public ResponseEntity<String> changePW() throws Exception {
+//        memberService.changepw();
+//        return ResponseEntity.status(HttpStatus.OK).body(memberService.changepw());
+//        return memberService.changepw();
+//    System.out.println("조회성공");
+//            return ResponseEntity.status(HttpStatus.OK).body("조회성공");
+//    }
 }

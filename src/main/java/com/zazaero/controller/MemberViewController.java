@@ -1,11 +1,10 @@
 package com.zazaero.controller;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserViewController {
+public class MemberViewController {
 
     @GetMapping("/login")
     public String login() {

@@ -18,10 +18,6 @@ public class MemberDetailService implements UserDetailsService {
 
     @Override
     public Member loadUserByUsername(String id) {
-        Member member = memberRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.:" + id));
-
-        member.setAuthorities(Collections.singleton(new SimpleGrantedAuthority(member.getMem_type())));
-
-        return member;
+        return memberRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException(id));
     }
 }

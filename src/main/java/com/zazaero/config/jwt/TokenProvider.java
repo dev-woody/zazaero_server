@@ -1,16 +1,14 @@
 package com.zazaero.config.jwt;
 
-import com.zazaero.domain.User;
+import com.zazaero.domain.Member;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.Authenticator;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -24,13 +22,12 @@ public class TokenProvider {
 
     private final JwtProperties jwtProperties;
 
-    public String generateToke(User user, Duration expriedAt) {
+    public String generateToken(Member member, Duration expiredAt) {
         Date now = new Date();
-
-        return makeToken(new Date(now.getTime() + expriedAt.toMillis()), user);
+        return makeToken(new Date(now.getTime() + expiredAt.toMillis()), member);
     }
 
-    private String makeToken(Date expiry, User user) {
+    private String makeToken(Date expiry, Member member) {
         Date now = new Date();
 
         return Jwts.builder()
@@ -38,13 +35,13 @@ public class TokenProvider {
                 .setIssuer(jwtProperties.getIssuer())
                 .setIssuedAt(now)
                 .setExpiration(expiry)
-                .setSubject(user.getEmail())
-                .claim("id", user.getId())
+//                .setSubject(member.getEmail())
+                .claim("id", member.getId())
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
 
-    public boolean walidToken(String token) {
+    public boolean validToken(String token) {
         try {
             Jwts.parser()
                     .setSigningKey(jwtProperties.getSecretKey())
@@ -55,6 +52,7 @@ public class TokenProvider {
             return false;
         }
     }
+
 
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
@@ -69,7 +67,7 @@ public class TokenProvider {
         return claims.get("id", Long.class);
     }
 
-    private  Claims getClaims(String token) {
+    private Claims getClaims(String token) {
         return Jwts.parser()
                 .setSigningKey(jwtProperties.getSecretKey())
                 .parseClaimsJws(token)
