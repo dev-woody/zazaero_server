@@ -56,4 +56,45 @@ public class commCode {
         private String name;
     }
 
+    @Getter
+    @AllArgsConstructor
+    public enum OrderType {
+        OT001("sian"),
+        OT002("self"),
+        OT003("sample"),
+        OT004("private"),
+        OT005("shop"),
+        OT006("event"),
+        OT007("school");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum MachineType {
+        M001(""),
+        M002("pc"),
+        M003("mobile"),
+        M004("shop"),
+        M005("app");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum MachineOSType {
+        OS001(""),
+        OS002("ipad"),
+        OS003("iphone"),
+        OS004("blackberry"),
+        OS005("android"),
+        OS006("atc"),
+        OS007("aos"),
+        OS008("ios");
+
+        private String name;
+    }
+
 }
