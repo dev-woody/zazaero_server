@@ -39,10 +39,10 @@ public class commCode {
     @Getter
     @AllArgsConstructor
     public enum ComType {
-        C001("COM"),
-        C002("ONE"),
-        C003("IND"),
-        C004("MST");
+        C000("COM"),
+        C001("ONE"),
+        C002("IND"),
+        C003("MST");
 
         private String name;
     }
@@ -50,8 +50,8 @@ public class commCode {
     @Getter
     @AllArgsConstructor
     public enum ComStatus {
-        C001("counsel"),
-        C002("customer");
+        C000("counsel"),
+        C001("customer");
 
         private String name;
     }
@@ -59,6 +59,7 @@ public class commCode {
     @Getter
     @AllArgsConstructor
     public enum OrderType {
+        OT000(""),
         OT001("sian"),
         OT002("self"),
         OT003("sample"),
@@ -73,11 +74,11 @@ public class commCode {
     @Getter
     @AllArgsConstructor
     public enum MachineType {
-        M001(""),
-        M002("pc"),
-        M003("mobile"),
-        M004("shop"),
-        M005("app");
+        M000(""),
+        M001("pc"),
+        M002("mobile"),
+        M003("shop"),
+        M004("app");
 
         private String name;
     }
@@ -85,14 +86,138 @@ public class commCode {
     @Getter
     @AllArgsConstructor
     public enum MachineOSType {
-        OS001(""),
-        OS002("ipad"),
-        OS003("iphone"),
-        OS004("blackberry"),
-        OS005("android"),
-        OS006("atc"),
-        OS007("aos"),
-        OS008("ios");
+        OS000(""),
+        OS001("ipad"),
+        OS002("iphone"),
+        OS003("blackberry"),
+        OS004("android"),
+        OS005("atc"),
+        OS006("aos"),
+        OS007("ios");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum Settlekind {
+        SK000(""),
+        SK001("bank"),
+        SK002("card"),
+        SK003("phone"),
+        SK004("payco"),
+        SK005("vbank"),
+        SK006("trans");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum Deli_confirm {
+        DC000(""),
+        DC001("admin"),
+        DC002("client");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum NumCode {
+        DC000("0"),
+        DC001("1");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum Ord_status {
+        OR000(""),
+        OR001("ord_writing"),
+        OR002("ord_ready"),
+        OR003("ord_doing"),
+        OR004("ord_edit"),
+        OR005("pay_try"),
+        OR006("pay_err"),
+        OR007("pay_ready"),
+        OR008("pay_done"),
+        OR009("make_doing"),
+        OR010("deli_ready"),
+        OR011("deli_doing"),
+        OR012("deli_done"),
+        OR013("ord_cancel"),
+        OR014("ret_ready"),
+        OR0015("ret_doing"),
+        OR0016("ret_done"),
+        OR0017("refund_ready"),
+        OR0018("refund_done");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum PayStatus {
+        P000(""),
+        P001("ready"),
+        P002("try"),
+        P003("err"),
+        P004("done"),
+        P005("hack");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum StatusCode {
+        S000(""),
+        S001("ready"),
+        S002("doing"),
+        S003("done");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum StatusCode_rd {
+        S000(""),
+        S001("ready"),
+        S002("done");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum StatusCode_dd {
+        S000(""),
+        S001("doing"),
+        S002("done");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum Cash_receipt_type {
+        C000(""),
+        C001("person"),
+        C002("company");
+
+        private String name;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum Cash_receipt_no_type {
+        C000(""),
+        C001("phone"),
+        C002("card"),
+        C003("biz_no");
 
         private String name;
     }
