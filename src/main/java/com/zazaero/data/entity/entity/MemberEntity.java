@@ -1,12 +1,11 @@
-package com.zazaero.domain;
+package com.zazaero.data.entity.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.zazaero.dto.MemberDTO;
-import com.zazaero.entity.MemberEntity;
-import jakarta.persistence.*;
-import com.zazaero.util.enumcode.commCode;
+import com.zazaero.data.dto.MemberDTO;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +14,6 @@ import java.sql.Time;
 import java.util.Date;
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Optional;
 
 
 @Entity
@@ -23,11 +21,13 @@ import java.util.Optional;
 @Getter
 @Table(name = "mem_info")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member implements UserDetails {
+@DynamicInsert
+@DynamicUpdate
+public class MemberEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
-    @Column(updatable = false)
+    @Column(name = "mem_uid", updatable = false)
     private Long mem_uid;
 
     @Column(nullable = false)
@@ -66,11 +66,12 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private String tax_calc_email;
 
-    @Column(nullable = false)
-    private String mem_type;
+    @Column(name = "mem_type", nullable = false)
+    @ColumnDefault("''")
+    private String memType;
 
     @Column(name= "mem_id", nullable = false, unique = true)
-    private String id;
+    private String memId;
 
     @Column(nullable = false)
     private String com_name;
@@ -180,22 +181,28 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private Time last_mem_log_time;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'Y'")
     private String hire_status;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'")
     private String hire_type;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'Y'")
     private String mem_use_flag;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String license_flag;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String sub_broker_flag;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String auto_buyer_uid;
 
     @Column(nullable = false)
@@ -220,7 +227,7 @@ public class Member implements UserDetails {
     private Integer last_building_assign_index;
 
     @Column(nullable = false)
-    private commCode.SnsCode connected_sns;
+    private String connected_sns;
 
     @Column(nullable = false)
     private String team_name;
@@ -270,47 +277,152 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private Date provision_agree_date;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private String provision_agree_type;
 
     @Column(nullable = false)
     private Integer mem_day_chk_cnt;
 
     @Column(nullable = false)
+    @ColumnDefault("0")
     private Integer cnt_login;
 
     @Column(nullable = false)
+    @ColumnDefault("1")
     private Integer client_level_uid;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String mgr_sms_recv;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String mem_mobile_hide;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String chk_email_sms;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String AT_app_test;
 
-    @Column(nullable = false)
+    @Column(name = "AT_app_debug", nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String AT_app_debug;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String push_ad_flag;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
+    @ColumnDefault("'N'")
     private String mem_out_flag;
 
     @Transient
     private Collection<SimpleGrantedAuthority> authorities;
 
-    @Builder
-    public Member(String id, String password, String auth) {
-        this.id = id;
-        this.password = password;
-    }
+//    @Builder
+//    public MemberEntity(String id,
+//                        String password,
+//                        String mem_name,
+//                        String hire_type,
+//                        String mem_type,
+//                        String hire_status,
+//                        Integer team_uid,
+//                        Integer mem_rank_uid,
+//                        String mem_mobile,
+//                        String mem_phone,
+//                        String mem_email,
+//                        String zonecode,
+//                        String addr1,
+//                        String addr2,
+//                        String memo,
+//                        String auth) {
+//        this.memId = id;
+//        this.password = password;
+//        this.mem_name = mem_name;
+//        this.hire_type = hire_type;
+//        this.memType = mem_type;
+//        this.hire_status = hire_status;
+//        this.team_uid = team_uid;
+//        this.mem_rank_uid = mem_rank_uid;
+//        this.mem_mobile = mem_mobile;
+//        this.mem_phone = mem_phone;
+//        this.mem_email = mem_email;
+//        this.zonecode = zonecode;
+//        this.addr1 = addr1;
+//        this.addr2 = addr2;
+//        this.memo = memo;
+//
+//        this.reg_date = new Date();
+//        this.reg_time = new Time(System.currentTimeMillis());
+//        this.reg_mem_uid = 0; // Or whatever default value you want
+//        this.reg_mem_machine = ""; // Or whatever default value you want
+//        this.reg_mem_os = ""; // Or whatever default value you want
+//        this.com_uid = 0L; // Or whatever default value you want
+//        this.com_fax = ""; // Or whatever default value you want
+//        this.biz_cate = ""; // Or whatever default value you want
+//        this.biz_item = ""; // Or whatever default value you want
+//        this.mem_ok_status = ""; // Or whatever default value you want
+//        this.sale_code_uid = 0; // Or whatever default value you want
+//        this.tax_calc_email = ""; // Or whatever default value you want
+//        this.ENC_app_login_key = ""; // Or whatever default value you want
+//        this.Z_app_device_uid = 0; // Or whatever default value you want
+//        this.device_id = ""; // Or whatever default value you want
+//        this.app_device_os = ""; // Or whatever default value you want
+//        this.push_id = ""; // Or whatever default value you want
+//        this.push_key_datetime = LocalDateTime.now(); // Or whatever default value you want
+//        this.push_id_dt = LocalDateTime.now(); // Or whatever default value you want
+//        this.pw_mod_date = new Date(); // Or whatever default value you want
+//        this.pw_mod_time = new Time(System.currentTimeMillis()); // Or whatever default value you want
+//        this.mem_no = ""; // Or whatever default value you want
+//        this.pay_bank_code = ""; // Or whatever default value you want
+//        this.pay_bank_owner = ""; // Or whatever default value you want
+//        this.last_mem_log_uid = 0; // Or whatever default value you want
+//        this.last_mem_log_date = new Date(); // Or whatever default value you want
+//        this.last_mem_log_time = new Time(System.currentTimeMillis()); // Or whatever default value you want
+//        this.hire_status = "Y"; // Or whatever default value you want
+//        this.mem_use_flag = "Y"; // Or whatever default value you want
+//        this.license_flag = "N"; // Or whatever default value you want
+//        this.sub_broker_flag = "N"; // Or whatever default value you want
+//        this.auto_buyer_uid = "N"; // Or whatever default value you want
+//        this.mem_prev = ""; // Or whatever default value you want
+//        this.mod_date = new Date(); // Or whatever default value you want
+//        this.mod_time = new Time(System.currentTimeMillis()); // Or whatever default value you want
+//        this.mod_mem_uid = 0; // Or whatever default value you want
+//        this.my_memo = ""; // Or whatever default value you want
+//        this.last_mgr_assign_index = 0; // Or whatever default value you want
+//        this.last_building_assign_index = 0; // Or whatever default value you want
+//        this.connected_sns = ""; // Or whatever default value you want
+//        this.team_name = ""; // Or whatever default value you want
+//        this.rank_name = ""; // Or whatever default value you want
+//        this.customer_uid = 0; // Or whatever default value you want
+//        this.find_certi_no = ""; // Or whatever default value you want
+//        this.find_certi_dt = LocalDateTime.now(); // Or whatever default value you want
+//        this.sns_prev = ""; // Or whatever default value you want
+//        this.recom_mem_id = ""; // Or whatever default value you want
+//        this.mem_out_reason_uid = 0; // Or whatever default value you want
+//        this.mem_out_reason_memo = ""; // Or whatever default value you want
+//        this.mem_out_date = new Date(); // Or whatever default value you want
+//        this.mem_out_time = new Date(); // Or whatever default value you want
+//        this.mem_out_mem_uid = 0; // Or whatever default value you want
+//        this.mem_point = 0; // Or whatever default value you want
+//        this.sns_type = ""; // Or whatever default value you want
+//        this.sns_id = ""; // Or whatever default value you want
+//        this.provision_agree_date = new Date(); // Or whatever default value you want
+//        this.provision_agree_type = ""; // Or whatever default value you want
+//        this.mem_day_chk_cnt = 0; // Or whatever default value you want
+//        this.cnt_login = 0; // Or whatever default value you want
+//        this.client_level_uid = 1; // Or whatever default value you want
+//        this.mgr_sms_recv = "N"; // Or whatever default value you want
+//        this.mem_mobile_hide = "N"; // Or whatever default value you want
+//        this.chk_email_sms = "N"; // Or whatever default value you want
+//        this.AT_app_test = "N"; // Or whatever default value you want
+//        this.AT_app_debug = "N"; // Or whatever default value you want
+//        this.push_ad_flag = "N"; // Or whatever default value you want
+//        this.mem_out_flag = "N"; // Or whatever default value you want
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -319,7 +431,7 @@ public class Member implements UserDetails {
 
     @Override
     public String getUsername() {
-        return id;
+        return memId;
     }
 
     @Override
@@ -347,8 +459,8 @@ public class Member implements UserDetails {
         return true;
     }
 
-    public static Member toMemberEntity(MemberDTO memberDTO){
-        Member memberEntity = new Member();
+    public static MemberEntity toMemberEntity(MemberDTO memberDTO){
+        MemberEntity memberEntity = new MemberEntity();
         memberEntity.setMem_uid(memberDTO.getMem_uid());
         memberEntity.setReg_date(memberDTO.getReg_date());
         memberEntity.setReg_time(memberDTO.getReg_time());
@@ -362,8 +474,8 @@ public class Member implements UserDetails {
         memberEntity.setMem_ok_status(memberDTO.getMem_ok_status());
         memberEntity.setSale_code_uid(memberDTO.getSale_code_uid());
         memberEntity.setTax_calc_email(memberDTO.getTax_calc_email());
-        memberEntity.setMem_type(memberDTO.getMem_type());
-        memberEntity.setId(memberDTO.getId());
+        memberEntity.setMemType(memberDTO.getMemType());
+        memberEntity.setMemId(memberDTO.getMemId());
         memberEntity.setCom_name(memberDTO.getCom_name());
         memberEntity.setCom_name2(memberDTO.getCom_name2());
         memberEntity.setCom_biz_no(memberDTO.getCom_biz_no());

@@ -1,11 +1,11 @@
-package com.zazaero.entity;
+package com.zazaero.data.entity.entity;
 
-import com.zazaero.util.enumcode.commCode;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.sql.Time;
 import java.util.Date;
@@ -15,69 +15,70 @@ import java.util.Date;
 @Getter
 @Table(name = "com_info")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Com_infoEntity {
+@DynamicUpdate
+public class ComInfoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private Integer com_uid;
+    @Column(name = "com_uid", updatable = false)
+    private Long id;
 
     @Column(nullable = false)
     private Date reg_date;
 
     @Column(nullable = false)
-    private Time reg_Time;
+    private Time reg_time;
 
     @Column(nullable = false)
     private Integer reg_mem_uid;
 
     @Column(nullable = false, length = 100)
-    private Character com_name;
+    private String com_name;
 
     @Column(nullable = false)
-    private commCode.ComType com_type;
+    private String com_type;
 
     @Column(nullable = false, length = 20)
-    private Character biz_no;
+    private String biz_no;
 
     @Column(nullable = false, length = 50)
-    private Character ceo_name;
+    private String ceo_name;
 
     @Column(nullable = false, length = 20)
-    private Character com_phone;
+    private String com_phone;
 
     @Column(nullable = false, length = 13)
-    private Character com_mobile;
+    private String com_mobile;
 
     @Column(nullable = false, length = 20)
-    private Character com_fax;
+    private String com_fax;
 
     @Column(nullable = false, length = 50)
-    private Character com_email;
+    private String com_email;
 
     @Column(nullable = false, length = 50)
-    private Character sale_refer_no;
+    private String sale_refer_no;
 
     @Column(nullable = false, length = 50)
-    private Character info_mgr_name;
+    private String info_mgr_name;
 
     @Column(nullable = false, length = 50)
-    private Character info_mgr_email;
+    private String info_mgr_email;
 
     @Column(nullable = false, length = 100)
-    private Character biz_type;
+    private String biz_type;
 
     @Column(nullable = false, length = 100)
-    private Character biz_item;
+    private String biz_item;
 
     @Column(nullable = false, length = 50)
-    private Character tax_calc_email;
+    private String tax_calc_email;
 
     @Column(nullable = false, length = 5)
-    private Character zonecode;
+    private String zonecode;
 
     @Column(nullable = false, length = 10)
-    private Character postcode;
+    private String postcode;
 
     @Column(nullable = false)
     private Integer post1;
@@ -95,7 +96,7 @@ public class Com_infoEntity {
     private Integer ct_mem_uid;
 
     @Column(nullable = false)
-    private commCode.YNCode com_use_flag;
+    private String com_use_flag;
 
     @Column(nullable = false)
     private Integer price_SMS;
@@ -107,7 +108,7 @@ public class Com_infoEntity {
     private Integer price_MMS;
 
     @Column(nullable = false)
-    private commCode.ComStatus com_status;
+    private String com_status;
 
     @Column(nullable = false)
     private Integer last_work_counsel_log_uid;
@@ -121,15 +122,15 @@ public class Com_infoEntity {
     @Column(nullable = false)
     private String biz_code;
 
-    @Column(nullable = false)
-    private String biz_sdate;
+    @Column
+    private Date biz_sdate;
 
     @Column(nullable = false, length = 50)
-    private Character callcenter_open_tiem;
+    private String callcenter_open_time;
 
     @Column(nullable = false, length = 20)
-    private Character parcel_fee_type;
+    private String parcel_fee_type;
 
     @Column(nullable = false, length = 20)
-    private Character delevery_type;
+    private String delivery_type;
 }

@@ -1,6 +1,6 @@
 package com.zazaero.config.jwt;
 
-import com.zazaero.domain.Member;
+import com.zazaero.data.entity.entity.MemberEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
@@ -22,12 +22,12 @@ public class TokenProvider {
 
     private final JwtProperties jwtProperties;
 
-    public String generateToken(Member member, Duration expiredAt) {
+    public String generateToken(MemberEntity member, Duration expiredAt) {
         Date now = new Date();
         return makeToken(new Date(now.getTime() + expiredAt.toMillis()), member);
     }
 
-    private String makeToken(Date expiry, Member member) {
+    private String makeToken(Date expiry, MemberEntity member) {
         Date now = new Date();
 
         return Jwts.builder()
@@ -36,7 +36,7 @@ public class TokenProvider {
                 .setIssuedAt(now)
                 .setExpiration(expiry)
 //                .setSubject(member.getEmail())
-                .claim("id", member.getId())
+                .claim("id", member.getMemId())
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }

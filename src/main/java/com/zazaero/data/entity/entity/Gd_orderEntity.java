@@ -1,4 +1,4 @@
-package com.zazaero.entity;
+package com.zazaero.data.entity.entity;
 
 import com.zazaero.util.enumcode.commCode;
 import jakarta.persistence.*;
@@ -307,7 +307,7 @@ public class Gd_orderEntity {
 
     @Column(nullable = false)
     @ColumnDefault("N")
-    private commCode.YNCode cancel_flag;
+    private commCode.YNType cancel_flag;
 
     @Column(nullable = false)
     private Integer cancel_reason_uid;
@@ -326,7 +326,7 @@ public class Gd_orderEntity {
 
     @Column(nullable = false)
     @ColumnDefault("N")
-    private commCode.YNCode refund_deli_flag;
+    private commCode.YNType refund_deli_flag;
 
     @Column(nullable = false)
     @ColumnDefault("S000")

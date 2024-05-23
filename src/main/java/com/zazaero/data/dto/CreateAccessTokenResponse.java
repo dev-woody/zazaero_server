@@ -1,4 +1,4 @@
-package com.zazaero.dto;
+package com.zazaero.data.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

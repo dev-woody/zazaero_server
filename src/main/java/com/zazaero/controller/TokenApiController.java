@@ -1,7 +1,7 @@
 package com.zazaero.controller;
 
-import com.zazaero.dto.CreateAccessTokenRequest;
-import com.zazaero.dto.CreateAccessTokenResponse;
+import com.zazaero.data.dto.CreateAccessTokenRequest;
+import com.zazaero.data.dto.CreateAccessTokenResponse;
 import com.zazaero.service.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

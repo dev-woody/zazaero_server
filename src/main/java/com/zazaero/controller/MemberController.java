@@ -1,38 +1,47 @@
 package com.zazaero.controller;
 
-import com.zazaero.domain.Member;
-import com.zazaero.dto.MemberDTO;
-import com.zazaero.repository.MemberRepository;
+import com.zazaero.data.dto.PostMemberDTO;
+import com.zazaero.data.entity.entity.MemberEntity;
 import com.zazaero.service.MemberService;
-import lombok.RequiredArgsConstructor;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequiredArgsConstructor
+@RestController
+@RequestMapping("/api/member")
 public class MemberController {
 
     @Autowired
-    private final MemberService memberService;
+    private MemberService memberService;
 
-    private final MemberRepository memberRepository;
-
-    @GetMapping("/member/save")
-    public String saveForm() {
-        return "save";
+    @PostMapping("/reg")
+    public MemberEntity save(@RequestBody PostMemberDTO dto) {
+        return memberService.save(dto);
     }
-    @PostMapping("/member/save")
-    public String save(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println("MemberController.save");
-        System.out.println("memberDTO = " + memberDTO);
-//        memberService.save(memberDTO);
 
-        return "index";
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        return "redirect:/login.html";
+    }
+
+    @GetMapping("/member-type")
+    public List<MemberEntity> memType(
+            @RequestParam("mem-type") String memType
+    ) {
+        return memberService.findMemverType(memType);
+    }
+
+    @GetMapping("")
+    public MemberEntity findMember(
+            @RequestParam("mem-uid") Long memUid
+    ) {
+        return memberService.findById(memUid);
     }
 
 //@GetMapping("/changePass")

@@ -1,16 +1,14 @@
-package com.zazaero.dto;
+package com.zazaero.data.dto;
 
 //import com.zazaero.entity.MemberEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.zazaero.domain.Member;
-import com.zazaero.util.enumcode.commCode;
+import com.zazaero.data.entity.entity.MemberEntity;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
 import java.util.Date;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Getter
 @Setter
@@ -33,8 +31,8 @@ public class MemberDTO {
     private String mem_ok_status;
     private Integer sale_code_uid;
     private String tax_calc_email;
-    private String mem_type;
-    private String id;
+    private String memType;
+    private String MemId;
     private String com_name;
     private String com_name2;
     private String com_biz_no;
@@ -84,7 +82,7 @@ public class MemberDTO {
     private String my_memo;
     private Integer last_mgr_assign_index;
     private Integer last_building_assign_index;
-    private commCode.SnsCode connected_sns;
+    private String connected_sns;
     private String team_name;
     private String rank_name;
     private Integer customer_uid;
@@ -116,7 +114,7 @@ public class MemberDTO {
 
     //lombok 어노테이션으로 getter,setter,생성자,toString 메서드 생략 가능
 
-    public static MemberDTO toMemberDTO(Member memberEntity){
+    public static MemberDTO toMemberDTO(MemberEntity memberEntity){
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setMem_uid(memberEntity.getMem_uid());
         memberDTO.setReg_date(memberEntity.getReg_date());
@@ -131,8 +129,8 @@ public class MemberDTO {
         memberDTO.setMem_ok_status(memberEntity.getMem_ok_status());
         memberDTO.setSale_code_uid(memberEntity.getSale_code_uid());
         memberDTO.setTax_calc_email(memberEntity.getTax_calc_email());
-        memberDTO.setMem_type(memberEntity.getMem_type());
-        memberDTO.setId(memberEntity.getId());
+        memberDTO.setMemType(memberEntity.getMemType());
+        memberDTO.setMemId(memberEntity.getMemId());
         memberDTO.setCom_name(memberEntity.getCom_name());
         memberDTO.setCom_name2(memberEntity.getCom_name2());
         memberDTO.setCom_biz_no(memberEntity.getCom_biz_name());

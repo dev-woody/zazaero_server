@@ -1,7 +1,7 @@
 package com.zazaero.service;
 
 import com.zazaero.config.jwt.TokenProvider;
-import com.zazaero.domain.Member;
+import com.zazaero.data.entity.entity.MemberEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class TokenService {
 
         Long userId = refreshTokenService.findByRefreshToken(refreshToken).getUserId();
         System.out.println("토큰아이디는 = " + userId);
-        Member member = memberService.findById(userId);
+        MemberEntity member = memberService.findByMemId(userId);
 
         return tokenProvider.generateToken(member, Duration.ofHours(2));
     }

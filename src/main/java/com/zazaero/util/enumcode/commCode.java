@@ -7,7 +7,7 @@ public class commCode {
 
     @Getter
     @AllArgsConstructor
-    public enum MemCode {
+    public enum MemType {
         M000("master"),
         M001("admin"),
         M002("client"),
@@ -18,7 +18,7 @@ public class commCode {
 
     @Getter
     @AllArgsConstructor
-    public enum YNCode {
+    public enum YNType {
         N("N"),
         Y("Y");
 
@@ -27,7 +27,7 @@ public class commCode {
 
     @Getter
     @AllArgsConstructor
-    public enum SnsCode {
+    public enum SnsType {
         S000("PAYCO"),
         S001("FACEBOOK"),
         S002("NAVER"),

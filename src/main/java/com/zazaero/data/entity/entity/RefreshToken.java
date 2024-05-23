@@ -1,4 +1,4 @@
-package com.zazaero.domain;
+package com.zazaero.data.entity.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

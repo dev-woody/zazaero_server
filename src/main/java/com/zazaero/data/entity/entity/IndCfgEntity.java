@@ -1,9 +1,13 @@
-package com.zazaero.entity;
+package com.zazaero.data.entity.entity;
 
 import com.zazaero.util.enumcode.commCode;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.math.BigInteger;
 import java.sql.Time;
@@ -14,7 +18,8 @@ import java.util.Date;
 @Setter
 @Table(name = "ind_cfg")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Ind_cfgEntity {
+@DynamicUpdate
+public class IndCfgEntity {
 
     @Id
     @GeneratedValue
@@ -22,10 +27,10 @@ public class Ind_cfgEntity {
     private Long ind_cfg_uid;
 
     @Column(name = "reg_date", nullable = false)
-    private Integer reg_date;
+    private Date reg_date;
 
-    @Column(name = "reg_time")
-    private Date reg_time;
+    @Column(name = "reg_time", nullable = false)
+    private Time reg_time;
 
     @Column(name = "reg_mem_uid", nullable = false)
     private Integer reg_mem_uid;
@@ -34,19 +39,19 @@ public class Ind_cfgEntity {
     private Integer customer_uid;
 
     @Column(name = "cfg_part1", nullable = false, length = 50)
-    private Character cfg_part1;
+    private String cfgPart1;
 
     @Column(name = "cfg_part2", nullable = false, length = 50)
-    private Character cfg_part2;
+    private String cfgPart2;
 
     @Column(name = "cfg_part3", nullable = false, length = 50)
-    private Character cfg_part3;
+    private String cfg_part3;
 
     @Column(name = "cfg_part4", nullable = false, length = 50)
-    private Character cfg_part4;
+    private String cfg_part4;
 
     @Column(name = "cfg_part5", nullable = false, length = 50)
-    private Character cfg_part5;
+    private String cfg_part5;
 
     @Column(name = "cfg_index", nullable = false)
     private Integer cfg_index;
@@ -70,19 +75,19 @@ public class Ind_cfgEntity {
     private BigInteger cfg_bigint_val3;
 
     @Column(name = "cfg_val1", nullable = false, length = 100)
-    private Character cfg_val1;
+    private String cfg_val1;
 
     @Column(name = "cfg_val2", nullable = false, length = 100)
-    private Character cfg_val2;
+    private String cfg_val2;
 
     @Column(name = "cfg_val3", nullable = false, length = 100)
-    private Character cfg_val3;
+    private String cfg_val3;
 
     @Column(name = "cfg_val4", nullable = false, length = 100)
-    private Character cfg_val4;
+    private String cfg_val4;
 
     @Column(name = "cfg_val5", nullable = false, length = 100)
-    private Character cfg_val5;
+    private String cfg_val5;
 
     @Column(name = "cfg_txt_val1", nullable = false)
     private String cfg_txt_val1;
@@ -101,14 +106,14 @@ public class Ind_cfgEntity {
 
     @Column(name = "ind_cfg_use_flag", nullable = false)
     @ColumnDefault("Y")
-    private commCode.YNCode ind_cfg_use_flag;
+    private String ind_cfg_use_flag;
 
     @Column(name = "hide", nullable = false, length = 1)
     @ColumnDefault("N")
     private String hide;
 
     @Column(name = "com_uid", nullable = false)
-    private Integer com_uid;
+    private Long com_uid;
 
     @Column(name = "mod_date")
     private Date mod_date;
@@ -124,5 +129,5 @@ public class Ind_cfgEntity {
 
     @Column(name = "editable", nullable = false)
     @ColumnDefault("Y")
-    private commCode.YNCode editable;
+    private String editable;
 }

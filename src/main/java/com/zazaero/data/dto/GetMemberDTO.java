@@ -1,4 +1,4 @@
-package com.zazaero.dto;
+package com.zazaero.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zazaero.util.enumcode.commCode;
@@ -73,7 +73,7 @@ public class GetMemberDTO {
     private String my_memo;
     private Integer last_mgr_assign_index;
     private Integer last_building_assign_index;
-    private commCode.SnsCode connected_sns;
+    private commCode.SnsType connected_sns;
     private String team_name;
     private String rank_name;
     private Integer customer_uid;
