@@ -29,6 +29,7 @@ public class WebSecurityConfig {
         return (web) -> web.ignoring()
                 .requestMatchers(toH2Console())
                 .requestMatchers(new AntPathRequestMatcher("/hello/**"));
+//                .requestMatchers(new AntPathRequestMatcher("/**"));
     }
 
     @Bean

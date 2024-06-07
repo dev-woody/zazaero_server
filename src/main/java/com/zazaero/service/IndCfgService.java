@@ -1,8 +1,11 @@
 package com.zazaero.service;
 
-import com.zazaero.data.dto.PutPayBankDTO;
-import com.zazaero.data.dto.PutProvisionDTO;
+import com.zazaero.data.dto.indCfg.PostPopupDTO;
+import com.zazaero.data.dto.indCfg.PutMemInfoDTO;
+import com.zazaero.data.dto.indCfg.PutPayBankDTO;
+import com.zazaero.data.dto.indCfg.PutProvisionDTO;
 import com.zazaero.data.entity.entity.IndCfgEntity;
+import com.zazaero.data.mapper.IndCfgMapper.PopupRegisterMapper;
 import com.zazaero.data.repository.IndCfgRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ public class IndCfgService {
 
     @Autowired
     private IndCfgRepository indCfgRepository;
+    private PopupRegisterMapper popupRegisterMapper;
 
     public IndCfgEntity getProvisionAndDefaultProvision(String cfgPart1, String cfgPart2) {
         return indCfgRepository.findByCfgPart1AndCfgPart2(cfgPart1, cfgPart2);
@@ -26,8 +30,8 @@ public class IndCfgService {
         if (dto.getCfg_txt_val1() != null) {
             entity.setCfg_txt_val1(dto.getCfg_txt_val1());
         }
-            entity.setMod_date(new Date());
-            entity.setMod_time(new Time(System.currentTimeMillis()));
+//            entity.setMod_date(new Date());
+//            entity.setMod_time(new Time(System.currentTimeMillis()));
             return indCfgRepository.save(entity);
         }
 
@@ -44,9 +48,20 @@ public class IndCfgService {
         if (dto.getCfg_val3() != null) {
             entity.setCfg_val3(dto.getCfg_val3());
         }
-        entity.setMod_date(new Date());
-        entity.setMod_time(new Time(System.currentTimeMillis()));
+//        entity.setMod_date(new Date());
+//        entity.setMod_time(new Time(System.currentTimeMillis()));
 
+        return indCfgRepository.save(entity);
+    }
+
+    public IndCfgEntity updateeMemInfo(PutMemInfoDTO dto) {
+        IndCfgEntity entity = indCfgRepository.findById(dto.getInd_cfg_uid())
+                .orElseThrow(() -> new RuntimeException("Entity not found"));
+        if (dto.getCfg_val1() != null) {
+            entity.setCfg_val1(dto.getCfg_val1());
+        }
+//        entity.setMod_date(new Date());
+//        entity.setMod_time(new Time(System.currentTimeMillis()));
         return indCfgRepository.save(entity);
     }
 
@@ -58,6 +73,11 @@ public class IndCfgService {
         } else entity.setInd_cfg_use_flag("Y");
 
         return indCfgRepository.save(entity);
+    }
+
+    public IndCfgEntity postPopup(PostPopupDTO dto) {
+
+        return indCfgRepository.save(popupRegisterMapper.toEntity(dto));
     }
 
 }

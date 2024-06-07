@@ -14,7 +14,7 @@ import java.util.Date;
 @Getter
 @Table(name = "sch_info")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Sch_infoEntity {
+public class SchInfoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,7 +16,7 @@ import java.util.Date;
 @Getter
 @Table(name = "gd_order")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Gd_orderEntity {
+public class GdOrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

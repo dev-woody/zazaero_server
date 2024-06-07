@@ -1,4 +1,4 @@
-package com.zazaero.data.dto;
+package com.zazaero.data.dto.member;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.zazaero.util.enumcode.commCode;
@@ -84,7 +84,8 @@ public class GetMemberDTO {
     private String recom_mem_id;
     private Integer mem_out_reason_uid;
     private String mem_out_reason_memo;
-    private Date mem_out_time;
+    private Date mem_out_date;
+    private Time mem_out_time;
     private Integer mem_out_mem_uid;
     private Integer mem_point;
     private String sns_type;

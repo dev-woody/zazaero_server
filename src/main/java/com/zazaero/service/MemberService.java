@@ -1,7 +1,7 @@
 package com.zazaero.service;
 
-import com.zazaero.data.dto.PostMemberDTO;
-import com.zazaero.data.entity.entity.MemberEntity;
+import com.zazaero.data.dto.member.PostMemberDTO;
+import com.zazaero.data.entity.member.MemberEntity;
 import com.zazaero.data.mapper.MemberMapper.MasterRegisterMapper;
 import com.zazaero.data.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,29 +18,9 @@ public class MemberService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final MasterRegisterMapper masterRegisterMapper;
 
-//    public String save(PostMemberDTO dto) {
-//        return memberRepository.save(MemberEntity.builder()
-//                .id(dto.getId())
-//                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
-//                .mem_name(dto.getMem_name())
-//                .hire_type(dto.getHire_type())
-//                .mem_type(dto.getMem_type())
-//                .hire_status(dto.getHire_status())
-//                .team_uid(dto.getTeam_uid())
-//                .mem_rank_uid(dto.getMem_rank_uid())
-//                .mem_mobile(dto.getMem_mobile())
-//                .mem_phone(dto.getMem_phone())
-//                .mem_email(dto.getMem_email())
-//                .zonecode(dto.getZonecode())
-//                .addr1(dto.getAddr1())
-//                .addr2(dto.getAddr2())
-//                .memo(dto.getMemo())
-//                .build()).getMemId();
-//    }
-
     public MemberEntity save(PostMemberDTO dto) {
+        dto.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
         return memberRepository.save(masterRegisterMapper.toEntity(dto));
-
     }
 
     public MemberEntity findByMemId(Long userId) {

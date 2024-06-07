@@ -1,7 +1,7 @@
 package com.zazaero.service;
 
 import com.zazaero.config.jwt.TokenProvider;
-import com.zazaero.data.entity.entity.MemberEntity;
+import com.zazaero.data.entity.member.MemberEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

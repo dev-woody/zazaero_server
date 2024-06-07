@@ -1,6 +1,6 @@
 package com.zazaero.config.jwt;
 
-import com.zazaero.data.entity.entity.MemberEntity;
+import com.zazaero.data.entity.member.MemberEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;

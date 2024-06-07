@@ -1,6 +1,6 @@
 package com.zazaero.service;
 
-import com.zazaero.data.entity.entity.MemberEntity;
+import com.zazaero.data.entity.member.MemberEntity;
 import com.zazaero.data.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +15,7 @@ public class MemberDetailService implements UserDetailsService {
 
     @Override
     public MemberEntity loadUserByUsername(String id) {
+        System.out.println(id);
         return memberRepository.findByMemId(id).orElseThrow(() -> new UsernameNotFoundException(id));
     }
 }

@@ -1,7 +1,7 @@
 package com.zazaero.controller;
 
-import com.zazaero.data.dto.GetComInfoDTO;
-import com.zazaero.data.dto.PutComInfoDTO;
+import com.zazaero.data.dto.indCfg.GetComInfoDTO;
+import com.zazaero.data.dto.indCfg.PutComInfoDTO;
 import com.zazaero.data.entity.entity.ComInfoEntity;
 import com.zazaero.service.ComInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

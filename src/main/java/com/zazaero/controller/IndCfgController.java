@@ -1,14 +1,16 @@
 package com.zazaero.controller;
 
-import com.zazaero.data.dto.PutPayBankDTO;
-import com.zazaero.data.dto.PutProvisionDTO;
+import com.zazaero.data.dto.indCfg.PostPopupDTO;
+import com.zazaero.data.dto.indCfg.PutMemInfoDTO;
+import com.zazaero.data.dto.indCfg.PutPayBankDTO;
+import com.zazaero.data.dto.indCfg.PutProvisionDTO;
 import com.zazaero.data.entity.entity.IndCfgEntity;
 import com.zazaero.service.IndCfgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/ind-cfg")
+@RequestMapping("/api/ind_cfg")
 public class IndCfgController {
 
     @Autowired
@@ -38,4 +40,17 @@ public class IndCfgController {
             @RequestParam("uid") Long id) {
         return indCfgService.changeUseIndCfg(id);
     }
+
+    @PutMapping("/mem_info")
+    public IndCfgEntity updateMemInfo(
+            @RequestBody PutMemInfoDTO dto) {
+        return indCfgService.updateeMemInfo(dto);
+    }
+
+    @PostMapping("/popup")
+    public IndCfgEntity postPopup(
+            @RequestBody PostPopupDTO dto) {
+        return indCfgService.postPopup(dto);
+    }
+
 }

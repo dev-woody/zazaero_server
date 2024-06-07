@@ -1,7 +1,7 @@
 package com.zazaero.service;
 
-import com.zazaero.data.dto.GetComInfoDTO;
-import com.zazaero.data.dto.PutComInfoDTO;
+import com.zazaero.data.dto.indCfg.GetComInfoDTO;
+import com.zazaero.data.dto.indCfg.PutComInfoDTO;
 import com.zazaero.data.entity.entity.ComInfoEntity;
 import com.zazaero.data.repository.ComInfoRepository;
 import jakarta.transaction.Transactional;

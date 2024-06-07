@@ -1,7 +1,7 @@
 package com.zazaero.controller;
 
-import com.zazaero.data.dto.PostMemberDTO;
-import com.zazaero.data.entity.entity.MemberEntity;
+import com.zazaero.data.dto.member.PostMemberDTO;
+import com.zazaero.data.entity.member.MemberEntity;
 import com.zazaero.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

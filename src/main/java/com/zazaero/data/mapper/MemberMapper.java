@@ -1,7 +1,7 @@
 package com.zazaero.data.mapper;
 
-import com.zazaero.data.dto.PostMemberDTO;
-import com.zazaero.data.entity.entity.MemberEntity;
+import com.zazaero.data.dto.member.PostMemberDTO;
+import com.zazaero.data.entity.member.MemberEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

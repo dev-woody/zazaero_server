@@ -1,4 +1,4 @@
-package com.zazaero.data.dto;
+package com.zazaero.data.dto.member;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
