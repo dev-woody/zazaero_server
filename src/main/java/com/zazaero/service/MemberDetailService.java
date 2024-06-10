@@ -15,7 +15,6 @@ public class MemberDetailService implements UserDetailsService {
 
     @Override
     public MemberEntity loadUserByUsername(String id) {
-        System.out.println(id);
         return memberRepository.findByMemId(id).orElseThrow(() -> new UsernameNotFoundException(id));
     }
 }

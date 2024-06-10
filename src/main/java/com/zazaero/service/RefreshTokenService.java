@@ -1,6 +1,6 @@
 package com.zazaero.service;
 
-import com.zazaero.data.entity.entity.RefreshToken;
+import com.zazaero.data.entity.indCfg.RefreshToken;
 import com.zazaero.data.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

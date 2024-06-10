@@ -30,7 +30,7 @@ public abstract class DeleteBaseEntity extends ModifyBaseEntity {
 
     @Builder.Default
     @Column(nullable = false, length = 1)
-    protected String memOutFlag = "N";
+    protected String mem_out_flag = "N";
 
     @PrePersist
     public void prePersist() {

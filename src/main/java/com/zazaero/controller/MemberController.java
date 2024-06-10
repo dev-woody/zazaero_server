@@ -34,7 +34,7 @@ public class MemberController {
     public List<MemberEntity> memType(
             @RequestParam("mem-type") String memType
     ) {
-        return memberService.findMemverType(memType);
+        return memberService.findMemType(memType);
     }
 
     @GetMapping("")

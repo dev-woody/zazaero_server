@@ -30,6 +30,6 @@ public abstract class PersonEntity extends DeleteBaseEntity {
     @PrePersist
     public void prePersist() {
         super.prePersist();
-        this.regMemUid = this.uid;
+//        this.regMemUid = this.uid;
     }
 }

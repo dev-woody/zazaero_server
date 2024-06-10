@@ -32,7 +32,7 @@ public class MemberDTO {
     private Integer sale_code_uid;
     private String tax_calc_email;
     private String memType;
-    private String MemId;
+    private String memId;
     private String com_name;
     private String com_name2;
     private String com_biz_no;

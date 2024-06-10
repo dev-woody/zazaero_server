@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 
+import java.math.BigInteger;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,7 +39,7 @@ public class PostMemberDTO {
     private String hire_type;
 
     @NotBlank
-    private String mem_type;
+    private String memType;
 
     @NotBlank
     private String hire_status;
@@ -61,4 +63,7 @@ public class PostMemberDTO {
     private String addr1;
     private String addr2;
     private String memo;
+
+    @NotBlank
+    private BigInteger com_uid;
 }

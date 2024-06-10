@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SignInDto {
 
-    private String mem_id;
+    private String memId;
     private String password;
 }

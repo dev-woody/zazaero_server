@@ -1,6 +1,6 @@
 package com.zazaero.data.repository;
 
-import com.zazaero.data.entity.entity.ComInfoEntity;
+import com.zazaero.data.entity.indCfg.ComInfoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

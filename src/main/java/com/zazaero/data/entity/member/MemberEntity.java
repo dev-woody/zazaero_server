@@ -247,8 +247,8 @@ public class MemberEntity extends DeleteBaseEntity implements UserDetails {
 //    @Column(name = "mem_out_time")
 //    private Time mem_out_time;
 
-    @Column(name = "memOutFlag", nullable = false, length = 1)
-    private String memOutFlag = "N";
+//    @Column(name = "mem_out_flag", nullable = false, length = 1)
+//    private String mem_out_flag = "N";
 
 
     @Transient
@@ -258,7 +258,7 @@ public class MemberEntity extends DeleteBaseEntity implements UserDetails {
     public MemberEntity( String mem_nickname, String memId, String password, String mem_name,
                          String hire_type, String memType, String hire_status, Integer team_uid, Integer mem_rank_uid,
                          String mem_mobile, String mem_phone, String mem_email, String zonecode, String addr1,
-                         String addr2, String memo) {
+                         String addr2, String memo, BigInteger com_uid) {
         this.mem_nickname = mem_nickname;
         this.memId = memId;
         this.password = password;
@@ -277,6 +277,7 @@ public class MemberEntity extends DeleteBaseEntity implements UserDetails {
         this.memo = memo;
 
         this.reg_mem_os = "";
+        this.com_uid = com_uid;
     }
 
     @Override

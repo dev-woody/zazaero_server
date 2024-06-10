@@ -28,7 +28,7 @@ public class MemberService {
                 .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
     }
 
-    public List<MemberEntity> findMemverType(String memType) {
+    public List<MemberEntity> findMemType(String memType) {
         return memberRepository.findByMemType(memType);
     }
 

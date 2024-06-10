@@ -1,4 +1,4 @@
-package com.zazaero.data.entity.entity;
+package com.zazaero.data.entity.indCfg;
 
 import com.zazaero.util.enumcode.commCode;
 import jakarta.persistence.*;

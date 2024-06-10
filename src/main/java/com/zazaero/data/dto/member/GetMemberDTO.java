@@ -22,8 +22,8 @@ public class GetMemberDTO {
     private String mem_ok_status;
     private Integer sale_code_uid;
     private String tax_calc_email;
-    private String mem_type;
-    private String id;
+    private String memType;
+    private String mem_id;
     private String com_name;
     private String com_name2;
     private String com_biz_no;

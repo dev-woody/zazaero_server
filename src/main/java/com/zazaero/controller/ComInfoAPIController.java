@@ -2,13 +2,13 @@ package com.zazaero.controller;
 
 import com.zazaero.data.dto.indCfg.GetComInfoDTO;
 import com.zazaero.data.dto.indCfg.PutComInfoDTO;
-import com.zazaero.data.entity.entity.ComInfoEntity;
+import com.zazaero.data.entity.indCfg.ComInfoEntity;
 import com.zazaero.service.ComInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/com_info")
+@RequestMapping("/api/com_info")
 public class ComInfoAPIController {
 
     private final ComInfoService comInfoService;

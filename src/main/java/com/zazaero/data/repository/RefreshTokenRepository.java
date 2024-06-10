@@ -1,7 +1,7 @@
 package com.zazaero.data.repository;
 
 
-import com.zazaero.data.entity.entity.RefreshToken;
+import com.zazaero.data.entity.indCfg.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.zazaero.data.entity.entity;
+package com.zazaero.data.entity.indCfg;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

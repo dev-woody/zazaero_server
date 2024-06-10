@@ -23,8 +23,8 @@ public abstract class DefaultBaseEntity {
     @Column( updatable = false, nullable = false)
     protected Integer uid;
 
-    @Column(name = "reg_mem_uid", nullable = false, updatable = false)
-    protected Integer regMemUid;
+//    @Column(name = "reg_mem_uid", nullable = false, updatable = false)
+//    protected Integer regMemUid;
 
     @Column(name = "reg_date", nullable = false, updatable = false)
     private Date regDate;
@@ -40,7 +40,7 @@ public abstract class DefaultBaseEntity {
     public void prePersist() {
         this.regDate = new Date();
         this.regTime = new Time(System.currentTimeMillis());
-        this.regMemUid = 0;
+//        this.regMemUid = 0;
     }
 
 }

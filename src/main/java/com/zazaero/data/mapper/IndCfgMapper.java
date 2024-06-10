@@ -1,7 +1,7 @@
 package com.zazaero.data.mapper;
 
 import com.zazaero.data.dto.indCfg.PostPopupDTO;
-import com.zazaero.data.entity.entity.IndCfgEntity;
+import com.zazaero.data.entity.indCfg.IndCfgEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

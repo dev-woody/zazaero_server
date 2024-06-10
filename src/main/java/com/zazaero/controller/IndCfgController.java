@@ -4,7 +4,7 @@ import com.zazaero.data.dto.indCfg.PostPopupDTO;
 import com.zazaero.data.dto.indCfg.PutMemInfoDTO;
 import com.zazaero.data.dto.indCfg.PutPayBankDTO;
 import com.zazaero.data.dto.indCfg.PutProvisionDTO;
-import com.zazaero.data.entity.entity.IndCfgEntity;
+import com.zazaero.data.entity.indCfg.IndCfgEntity;
 import com.zazaero.service.IndCfgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class IndCfgController {
 
     @PutMapping("/change_use")
     public IndCfgEntity changeUse(
-            @RequestParam("uid") Long id) {
+            @RequestParam("uid") Integer id) {
         return indCfgService.changeUseIndCfg(id);
     }
 
